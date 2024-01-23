@@ -1,0 +1,30 @@
+name: demo_data_pipeline
+on:
+  workflow_dispatch:
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+
+  deploy-dev:
+    runs-on: ubuntu-latest
+    environment: 
+      name: dev
+    needs: build
+    steps:
+      - name: Run a one-line script
+        run: echo Deploy Dev
+  
+  deploy-prd:
+    runs-on: ubuntu-latest
+    environment: 
+      name: prd
+      url: 'app.powerbi.com'
+    needs: deploy-dev
+    steps:
+      - name: Run a one-line script
+        run: echo Deploy PRD
