@@ -19,10 +19,10 @@ jobs:
       - name: Run a one-line script
         run: echo Deploy Dev
   
-  deploy-prd:
+  deploy-prod:
     runs-on: ubuntu-latest
     environment: 
-      name: prd
+      name: prod
       url: 'app.powerbi.com'
     needs: deploy-dev
     steps:
